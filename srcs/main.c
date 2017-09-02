@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.h                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsolis <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/22 18:47:41 by gsolis            #+#    #+#             */
-/*   Updated: 2017/01/22 18:47:47 by gsolis           ###   ########.fr       */
+/*   Created: 2017/02/08 21:58:04 by gsolis            #+#    #+#             */
+/*   Updated: 2017/02/08 21:58:06 by gsolis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FILLIT_H
-# define FILLIT_H
+#include "./../includes/fillit.h"
 
-# include <stdio.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "./libft/libft.h"
+int			main(int argc, char **argv)
+{
+	char	*buf;
+	char	**pieces;
 
-int				main(int args, char **argv);
-int				ft_space(char *str);
-int				ft_check(char **str, int i, int j);
-int				ft_comp(char **str, int i, int j);
-int				ft_comp2(char **str, int i, int j);
-int				ft_comp3(char **str, int i, int j);
-
-#endif
+	g_size = 2;
+	if (argc != 2)
+	{
+		ft_putstr("usage: fillit [file]\n");
+		exit(1);
+	}
+	buf = reader(argv[1]);
+	pieces = ft_pieces(buf);
+	if ((ft_getval(pieces)) == 0)
+		ft_error();
+	if ((ft_getval2(pieces)) == 0)
+		ft_error();
+	fillit(pieces);
+	return (0);
+}
